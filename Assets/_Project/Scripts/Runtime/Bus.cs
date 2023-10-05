@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class Bus 
 {
     public event Action<object, string> Message;
-    public event Action<object, string> error;
+    //public event Action<object, string> error;
 
 
     public void Send(object sender, string messsage)

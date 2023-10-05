@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using KLab.MessageBuses;
 
 public class MenuManager : MonoBehaviour
 {
     public WelcomeMenu WelcomeMenuPreab;
-    public GameMenu GameMenuPrefab;
     public PauseMenu PauseMenuPrefab;
-    public Exemple  Exemple;
     public GameOver GameOverMenuPrefab;
-    private Stack<Menu> menuStack = new Stack<Menu>();
+
+    [SerializeField] private Stack<Menu> _menuStack = new ();
 
     public static MenuManager Instance { get; set; }
 
     private void Awake()
     {
         Instance = this;
-        Exemple.Show();
-        
+        WelcomeMenu.Show();    
     }
 
     private void OnDestroy()
@@ -35,11 +34,11 @@ public class MenuManager : MonoBehaviour
 	public void OpenMenu(Menu instance)
     {
         // De-activate top menu
-        if (menuStack.Count > 0)
+        if (_menuStack.Count > 0)
         {
 			if (instance.DisableMenusUnderneath)
 			{
-				foreach (var menu in menuStack)
+				foreach (var menu in _menuStack)
 				{
 					menu.gameObject.SetActive(false);
 
@@ -50,11 +49,11 @@ public class MenuManager : MonoBehaviour
 
             var topCanvas = instance.GetComponent<Canvas>();
             print(topCanvas);
-            var previousCanvas = menuStack.Peek().GetComponent<Canvas>();
+            var previousCanvas = _menuStack.Peek().GetComponent<Canvas>();
 			topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
         }
 
-        menuStack.Push(instance);
+        _menuStack.Push(instance);
         
     }
 
@@ -78,13 +77,14 @@ public class MenuManager : MonoBehaviour
 	
 	public void CloseMenu(Menu menu)
 	{
-		if (menuStack.Count == 0)
+		if (_menuStack.Count == 0)
 		{
 			Debug.LogErrorFormat(menu, "{0} cannot be closed because menu stack is empty", menu.GetType());
+
 			return;
 		}
 
-		if (menuStack.Peek() != menu)
+		if (_menuStack.Peek() != menu)
 		{
 			Debug.LogErrorFormat(menu, "{0} cannot be closed because it is not on top of stack", menu.GetType());
 			return;
@@ -95,7 +95,9 @@ public class MenuManager : MonoBehaviour
 
 	public void CloseTopMenu()
     {
-        var instance = menuStack.Pop();
+
+        //Debug.Log("On close, Stack count: "+ _menuStack.Count);
+        var instance = _menuStack.Pop();
 
 		if (instance.DestroyWhenClosed)
         	Destroy(instance.gameObject);
@@ -104,7 +106,7 @@ public class MenuManager : MonoBehaviour
 
         // Re-activate top menu
 		// If a re-activated menu is an overlay we need to activate the menu under it
-		foreach (var menu in menuStack)
+		foreach (var menu in _menuStack)
 		{
             menu.gameObject.SetActive(true);
 
@@ -116,9 +118,9 @@ public class MenuManager : MonoBehaviour
     private void Update()
     {
         // On Android the back button is sent as Esc
-        if (Input.GetKeyDown(KeyCode.Escape) && menuStack.Count > 0)
+        if (Input.GetKeyDown(KeyCode.Escape) && _menuStack.Count > 0)
         {
-            menuStack.Peek().OnBackPressed();
+            _menuStack.Peek().OnBackPressed();
         }
     }
 }

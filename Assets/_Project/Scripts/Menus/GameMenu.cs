@@ -6,11 +6,12 @@ using TMPro;
 
 public class GameMenu : SimpleMenu<GameMenu>
 {
-
+    
     public void OnPlayModeButtonPressed()
     {
-
+        
     }
+
 
     public void OnPauseButtonPressed()
     {

@@ -26,9 +26,6 @@
 # Visual Studio cache directory
 .vs/
 
-# Visual Studio code directory
-.vscode/
-
 # Gradle cache directory
 .gradle/
 
@@ -73,13 +70,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-
-Assets/Tests/
-Assets/Tests.meta
-
-Today.md
-
-# Eflatun.SceneReference auto-generated map file
-**/[Aa]ssets/Resources/Eflatun/SceneReference/SceneGuidToPathMap.generated.json
-**/[Aa]ssets/Resources/Eflatun/SceneReference/SceneGuidToPathMap.generated.json.meta
