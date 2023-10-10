@@ -58,5 +58,5 @@ public class PlayManager : MonoBehaviour
         _camera.gameObject.SetActive(false);
     }
 
-    //dfsdfdf
+//mety
 }
