@@ -120,6 +120,8 @@ MonoBehaviour:
     type: 3}
   GameOverMenuPrefab: {fileID: -2278120625591048620, guid: 21bd6eb4b49967f4fa568f322d58e246,
     type: 3}
+  HUDMenuPrefab: {fileID: 5097485129431141927, guid: e6177b61f754e13458455c7186c4976a,
+    type: 3}
 --- !u!1 &9059226858144221204
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameMenu : SimpleMenu<GameMenu>
+public class HUDMenu : SimpleMenu<HUDMenu>
 {
-    
+    //[SerializeField] private Camera _camera;
+
     public void OnPlayModeButtonPressed()
     {
-        
+
     }
 
 
