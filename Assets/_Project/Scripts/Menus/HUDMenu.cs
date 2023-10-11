@@ -6,7 +6,7 @@ public class HUDMenu : SimpleMenu<HUDMenu>
 {
     public void OnReplayButtonPressed()
     {
-        GameMenu.Show();
+        HUDMenu.Show();
     }
     public void OnExitButtonPressed()
     {
