@@ -18,16 +18,16 @@ public class MenuManager : MonoBehaviour
     {
         Instance = this;
         WelcomeMenu.Show();
+
         MessageBus.GetBus<BoardAction>()
-           .Connect(msg => OnActionBoardMessage(msg));
+            .Connect(msg => OnActionMessage(msg));
     }
 
-    private void OnActionBoardMessage(BoardActionType msg)
+    private void OnActionMessage(BoardActionType msg)
     {
         switch (msg)
         {
             case BoardActionType.Close:
-                HUDMenu.Hide();
                 break;
             case BoardActionType.Show:
                 HUDMenu.Show();
