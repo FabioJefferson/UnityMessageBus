@@ -1,7 +1,6 @@
 ﻿using KLab.MessageBuses;
 using System;
 using System.Diagnostics;
-using test.Utils;
 
 
 public class Game
@@ -27,7 +26,6 @@ public class Game
     public Game()
     {
         _board = new Board();
-        _gameMode = ChooseGameMode();
         _play = new Play();
 
         var boardInputBus = MessageBus.GetBus<BoardInputBus>();
@@ -41,12 +39,7 @@ public class Game
         boardInputBus.Connect(move => OnBoardInput(move));
         _playerSwitchedBus.Broadcast(_currentPlayer);
 
-        int ChooseGameMode()
-        {
-            GameMode gameMode = new();
-            gameMode.SetGameMode();
-            return gameMode.Mode;
-        }
+       
     }
 
     private void OnBoardInput(Move move)
