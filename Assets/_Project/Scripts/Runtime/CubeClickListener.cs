@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CubeClickListener : MonoBehaviour
 {
     //private BoardInputBus _boardBus;
@@ -18,25 +19,18 @@ public class CubeClickListener : MonoBehaviour
 
     public void SetCallBack(Action callback)
     {
+        Debug.Log("setCallBack");
         _onClick = callback;
     }
 
-    private void OnMouseUp()
-    {
-        _onClick?.Invoke();
-        //_boardBus = MessageBus.GetBus<BoardInputBus>();
-        //if (_boardBus == null)
-        //{
-        //    Debug.LogError("_boardBus not Found", this);
-        //    return;
-        //}
-        //if (_moveMessage == null)
-        //{
-        //    Debug.LogError("_moveMessage not Initialized", this);
-        //    return;
-        //}
-        //_boardBus.Broadcast(_moveMessage);
 
-        //Debug.Log("Cube clicked, Piece Index: " + _moveMessage.Position.GridIndex + " idPlayer = " + _moveMessage.PlayerId);
+    private void OnMouseUpAsButton()
+    {
+        // This code is executed when the mouse button is released over this 2D object.
+        Debug.Log("Mouse button released over this 2D object!");
+
+        _onClick?.Invoke();
+
+        // You can add more code to handle the desired behavior.
     }
 }

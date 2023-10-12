@@ -2,7 +2,6 @@ using KLab.MessageBuses;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
 public class CubeClickHandler : MonoBehaviour
 {
     [SerializeField] private GameObject[] _cubeList = new GameObject[9];
@@ -57,6 +56,7 @@ public class CubeClickHandler : MonoBehaviour
         var position = _cubeSelected.transform.position;
         var _ = Instantiate(GetPlayersPawn(move.Player), position, Quaternion.identity);
 
+        Debug.Log("GREGRG" );
         Pawn GetPlayersPawn(Player playerId)
         {
             if (!_playerToPawn.ContainsKey(playerId))
@@ -95,6 +95,7 @@ public class CubeClickHandler : MonoBehaviour
     private void OnMouseUpHandler(Position pos)
     {
         Move move = new(false, pos, _currentPlayer);
+        Debug.Log("UUUUUU");
         MessageBus.GetBus<BoardInputBus>()
             .Broadcast(move);
     }
