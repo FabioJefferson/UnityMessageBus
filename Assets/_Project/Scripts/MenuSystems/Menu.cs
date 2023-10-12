@@ -12,49 +12,49 @@ public abstract class Menu<T> : Menu where T : Menu<T>
     protected virtual void OnDestroy()
     {
         Instance = null;
-	}
+    }
 
-	protected static void Open()
-	{
-		if (Instance == null)
-		{
-		 
-            MenuManager.Instance.CreateInstance<T>();
+    protected static void Open()
+    {
+        if (Instance == null)
+        {
+
+            Instance = MenuManager.Instance.CreateInstance<T>();
         }
 
-		else
-		{
+        //else
+        {
             Instance.gameObject.SetActive(true);
-			 
+
         }
-			
-		
-		MenuManager.Instance.OpenMenu(Instance);
-	}
 
-	protected static void Close()
-	{
-		if (Instance == null)
-		{
-			Debug.LogErrorFormat("Trying to close menu {0} but Instance is null", typeof(T));
-			return;
-		}
 
-		MenuManager.Instance.CloseMenu(Instance);
-	}
+        MenuManager.Instance.OpenMenu(Instance);
+    }
 
-	public override void OnBackPressed()
-	{
-		Close();
-	}
+    protected static void Close()
+    {
+        if (Instance == null)
+        {
+            Debug.LogErrorFormat("Trying to close menu {0} but Instance is null", typeof(T));
+            return;
+        }
+
+        MenuManager.Instance.CloseMenu(Instance);
+    }
+
+    public override void OnBackPressed()
+    {
+        Close();
+    }
 }
 
 public abstract class Menu : MonoBehaviour
 {
-	[Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")]
-	public bool DestroyWhenClosed = true;
+    [Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")]
+    public bool DestroyWhenClosed = true;
 
-	[Tooltip("Disable menus that are under this one in the stack")]
-	public bool DisableMenusUnderneath = true;
-	public abstract void OnBackPressed();
+    [Tooltip("Disable menus that are under this one in the stack")]
+    public bool DisableMenusUnderneath = true;
+    public abstract void OnBackPressed();
 }
