@@ -1,3 +1,4 @@
+using KLab.MessageBuses;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class HUDMenu : SimpleMenu<HUDMenu>
 
     public void Awake()
     {
+        _HUDButtonAction = MessageBus.GetBus<HUDButtonAction>();
         _pauseBtn.onClick.AddListener(() => OnPausePressed());
         _exitBtn.onClick.AddListener(() => OnExitPressed());
     }
