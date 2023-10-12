@@ -21,6 +21,26 @@ public class MenuManager : MonoBehaviour
 
         MessageBus.GetBus<BoardAction>()
             .Connect(msg => OnActionMessage(msg));
+        MessageBus.GetBus<HUDButtonAction>()
+            .Connect(msg => OnHUDButtonActionMessage(msg));
+    }
+
+    private void OnHUDButtonActionMessage(HUDButtonActionType msg)
+    {
+        switch (msg)
+        {
+            case HUDButtonActionType.Pause:
+                HUDMenu.Hide();
+                PauseMenu.Show();
+                break;
+            case HUDButtonActionType.Exit:
+                HUDMenu.Hide();
+                WelcomeMenu.Show();
+                break;
+            default:
+                break;
+
+        }
     }
 
     private void OnActionMessage(BoardActionType msg)
