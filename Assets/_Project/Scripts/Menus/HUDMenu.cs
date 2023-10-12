@@ -25,8 +25,14 @@ public class HUDMenu : SimpleMenu<HUDMenu>
     }
     public void OnExitPressed()
     {
+
         Debug.Log("HUDExitPressed");
         _HUDButtonAction.Broadcast(HUDButtonActionType.Exit);
 
+    }
+    private void OnDestroy()
+    {
+        _pauseBtn.onClick.RemoveAllListeners();
+        _exitBtn.onClick.RemoveAllListeners();
     }
 }
