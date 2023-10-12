@@ -8,5 +8,7 @@ namespace Assets._Project.Scripts.Utils
 {
     internal interface ILogics
     {
+        public Position SetMove();
+       
     }
 }

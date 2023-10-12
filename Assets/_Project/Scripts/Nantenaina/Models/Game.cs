@@ -1,8 +1,9 @@
-﻿using KLab.MessageBuses;
+﻿using AI_TictacToe_logic.AI;
+using KLab.MessageBuses;
 using System;
 using System.Diagnostics;
 using test.Utils;
-
+using UnityEngine;
 
 public class Game
 {
@@ -10,7 +11,7 @@ public class Game
     private readonly Board _board;
     private bool _hasPlayEnded = false;
     private Play _play;
-    private int _gameMode = 0;
+    private GameModeType _gameMode;
 
     private const int PLAYER1ID = 54619896;
     private const int PLAYER2ID = 45464;
@@ -21,34 +22,60 @@ public class Game
     private Player _currentPlayer;
     private PlayerSwitchedBus _playerSwitchedBus;
     private PlayEndedBus _playEndedBus;
-
+    private MinMaxBot _aiBot;
+    private GameState _gameState;
+   
     private FilteredBoardInputBus _filteredBoardInputBus;
 
     public Game()
     {
         _board = new Board();
-        _gameMode = ChooseGameMode();
+      
         _play = new Play();
-
+        
         var boardInputBus = MessageBus.GetBus<BoardInputBus>();
-
+        var gameModeBus = MessageBus.GetBus<GameModeBus>();
         _playerSwitchedBus = MessageBus.GetBus<PlayerSwitchedBus>();
         _playEndedBus = MessageBus.GetBus<PlayEndedBus>();
         _filteredBoardInputBus = MessageBus.GetBus<FilteredBoardInputBus>();
-
+        
         _currentPlayer = _player1;
 
         boardInputBus.Connect(move => OnBoardInput(move));
         _playerSwitchedBus.Broadcast(_currentPlayer);
 
-        int ChooseGameMode()
+
+        ChooseGameMode();
+       
+        void ChooseGameMode()
         {
+             
             GameMode gameMode = new();
             gameMode.SetGameMode();
-            return gameMode.Mode;
+            gameModeBus.Broadcast(gameMode.Mode);
+            
         }
+        InitializeGameState();
+
     }
 
+    private void OnGameStarted()
+    {
+        
+    }
+    private void InitializeGameState()
+    {
+        if(_gameMode==GameModeType.AI)
+        {
+            _aiBot = new();
+            _gameState = new GameState(3, _player1, _aiBot);
+        }
+        else
+        {
+            _gameState = new GameState(3, _player1, _player2);
+        }
+        UnityEngine.Debug.Log($"GameState{_gameState.Board.AvailablePositions.Count}");
+    }
     private void OnBoardInput(Move move)
     {
         if (_hasPlayEnded)

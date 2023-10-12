@@ -1,5 +1,6 @@
 using KLab.MessageBuses;
 using System.Collections.Generic;
+using test.Utils;
 using TMPro;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ public class CubeClickHandler : MonoBehaviour
 
     private void ListenToBuses()
     {
+        MessageBus.GetBus<GameModeBus>()
+            .Connect(type => OnAIModeChoosen(type));
+
         MessageBus.GetBus<FilteredBoardInputBus>()
             .Connect(move => OnFilteredInputHandler(move));
         MessageBus.GetBus<PlayerSwitchedBus>()
@@ -35,6 +39,11 @@ public class CubeClickHandler : MonoBehaviour
         {
             Debug.LogError("_pawns is null");
         }
+    }
+
+    private void OnGameModeClicked()
+    {
+
     }
 
     private void AssignClickListeners()
@@ -97,6 +106,11 @@ public class CubeClickHandler : MonoBehaviour
         Move move = new(false, pos, _currentPlayer);
         MessageBus.GetBus<BoardInputBus>()
             .Broadcast(move);
+    }
+
+    private void OnAIModeChoosen(GameModeType type)
+    {
+        Debug.Log(type.ToString()); 
     }
 
     private void OnPlayEndHandler(PlayEndResult endResult)

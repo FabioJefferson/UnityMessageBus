@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
-
-public class Move
+﻿public class Move
 {
     public readonly bool IsBoardFull;
     public readonly Position Position;
