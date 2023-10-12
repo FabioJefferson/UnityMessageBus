@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 3632617223421840369}
   - component: {fileID: 4868616024432028674}
   m_Layer: 5
-  m_Name: Exit_Btn
+  m_Name: ExitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,6 +873,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyWhenClosed: 1
   DisableMenusUnderneath: 1
+  _pauseBtn: {fileID: 7401900600550674434}
+  _exitBtn: {fileID: 4868616024432028674}
 --- !u!1 &5809194817045554136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1280,7 @@ GameObject:
   - component: {fileID: 1771199221065406300}
   - component: {fileID: 7401900600550674434}
   m_Layer: 5
-  m_Name: ReplayBtn
+  m_Name: PauseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
