@@ -2,6 +2,7 @@
 using System.Reflection;
 using UnityEngine;
 using KLab.MessageBuses;
+using Sirenix.OdinInspector;
 
 public class MenuManager : MonoBehaviour
 {
@@ -30,11 +31,10 @@ public class MenuManager : MonoBehaviour
         switch (msg)
         {
             case HUDButtonActionType.Pause:
-                HUDMenu.Hide();
+                print("bomboclaat");
                 PauseMenu.Show();
                 break;
             case HUDButtonActionType.Exit:
-                HUDMenu.Hide();
                 WelcomeMenu.Show();
                 break;
             default:
@@ -63,11 +63,11 @@ public class MenuManager : MonoBehaviour
         Instance = null;
     }
 
-    public void CreateInstance<T>() where T : Menu
+    public T CreateInstance<T>() where T : Menu
     {
         var prefab = GetPrefab<T>();
 
-        Instantiate(prefab, transform);
+        return Instantiate(prefab, transform);
     }
 
     public void OpenMenu(Menu instance)
@@ -87,7 +87,6 @@ public class MenuManager : MonoBehaviour
             }
 
             var topCanvas = instance.GetComponent<Canvas>();
-            print(topCanvas);
             var previousCanvas = _menuStack.Peek().GetComponent<Canvas>();
             topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
         }
