@@ -24,9 +24,6 @@ public class WelcomeMenu : SimpleMenu<WelcomeMenu>
 
         Debug.Log("OnPlayPressed");
         _boardAction.Broadcast(BoardActionType.Show);
-
-
-        //Debug.Log("cochon nareo mianakavy 2");
     }
 
     public override void OnBackPressed()
