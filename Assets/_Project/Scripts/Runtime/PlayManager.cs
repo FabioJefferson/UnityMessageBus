@@ -40,7 +40,10 @@ public class PlayManager : MonoBehaviour
                 break;
             case BoardActionType.Show:
                 ShowEmptyBoard();
-                _game = new();
+                if (_game == null)
+                {
+                    _game = new();
+                }
                 break;
             default:
                 break;
