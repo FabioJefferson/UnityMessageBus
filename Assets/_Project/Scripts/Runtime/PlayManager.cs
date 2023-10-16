@@ -39,6 +39,8 @@ public class PlayManager : MonoBehaviour
             case BoardActionType.Show:
                 ShowEmptyBoard();
                 _game = new();
+                _game.InitializeGameState();
+               
                 break;
             default:
                 break;
@@ -57,5 +59,7 @@ public class PlayManager : MonoBehaviour
         _boardPrefab.gameObject.SetActive(false);
         //_camera.gameObject.SetActive(false);
     }
-    //gfdvuf
+
+    
+
 }

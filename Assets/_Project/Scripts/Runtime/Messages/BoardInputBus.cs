@@ -1,7 +1,8 @@
 using KLab.MessageBuses;
+using test.Utils;
 
 public sealed class BoardInputBus : MessageBus<Move> { }
-
+public sealed class GameModeBus: MessageBus<GameModeType> { }
 public sealed class FilteredBoardInputBus : MessageBus<Move>{ }
 
 public sealed class PlayerSwitchedBus : MessageBus<Player> { }

@@ -1,5 +1,4 @@
 ﻿
-
 public  class Position
 {
     public readonly int GridIndex;
@@ -7,4 +6,7 @@ public  class Position
     {
         GridIndex = index;
     }
+    public Position() { }
+
+
 }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 4feda208afa6b3a4a8d686c5521847d3
+<<<<<<<< HEAD:Assets/_Project/Sprite.meta
+guid: 8116de9f1a7831640bd55641e7f94579
+========
+guid: 6e0f8154401af1c49bf06df6c21c1697
+>>>>>>>> AI:Assets/_Project/Scripts/Utils.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
