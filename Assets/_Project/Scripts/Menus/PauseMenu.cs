@@ -3,11 +3,18 @@
 public class PauseMenu : SimpleMenu<PauseMenu>
 {
 
+    private BoardAction _boardAction;
+    private HUDButtonAction _HUDButtonAction;
+
+    private void Start()
+    {
+        _boardAction = MessageBus.GetBus<BoardAction>();
+        _HUDButtonAction = MessageBus.GetBus<HUDButtonAction>();
+    }
+
     public override void OnBackPressed()
     {
-        base.OnBackPressed();
-        MessageBus.GetBus<BoardAction>().Broadcast(BoardActionType.Show);
-        //MessageBus.GetBus<HUDButtonAction>().Broadcast(HUDButtonActionType.Show);
+        _boardAction.Broadcast(BoardActionType.Show);
     }
 
     public void OnQuitPressed()
@@ -15,6 +22,6 @@ public class PauseMenu : SimpleMenu<PauseMenu>
         Hide();
         Destroy(this.gameObject); // This menu does not automatically destroy itself
 
-        HUDMenu.Hide();
+        _HUDButtonAction.Broadcast(HUDButtonActionType.Exit);
     }
 }
