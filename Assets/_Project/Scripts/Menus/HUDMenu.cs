@@ -10,14 +10,12 @@ public class HUDMenu : SimpleMenu<HUDMenu>
     [SerializeField] private Button _exitBtn;
     private HUDButtonAction _HUDButtonAction;
 
-    private void Awake()
+    private void Start()
     {
         _HUDButtonAction = MessageBus.GetBus<HUDButtonAction>();
         _pauseBtn.onClick.AddListener(() => OnPausePressed());
         _exitBtn.onClick.AddListener(() => OnExitPressed());
     }
-
-
     public void OnPausePressed()
     {
         Debug.Log("HUDPausePressed");
@@ -30,9 +28,9 @@ public class HUDMenu : SimpleMenu<HUDMenu>
         _HUDButtonAction.Broadcast(HUDButtonActionType.Exit);
 
     }
-    private void OnDestroy()
-    {
-        _pauseBtn.onClick.RemoveAllListeners();
-        _exitBtn.onClick.RemoveAllListeners();
-    }
+    //private override void OnDestroy()
+    //{
+    //    _pauseBtn.onClick.RemoveAllListeners();
+    //    _exitBtn.onClick.RemoveAllListeners();
+    //}
 }
