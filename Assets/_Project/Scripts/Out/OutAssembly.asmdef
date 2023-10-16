@@ -1,0 +1,17 @@
+{
+    "name": "OutAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5ec8c9e8ffee7d54bb7a8712badd8898",
+        "GUID:bc508ecb65bc81a44b56bcbeed88129d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
