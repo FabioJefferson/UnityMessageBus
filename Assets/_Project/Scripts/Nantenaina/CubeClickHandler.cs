@@ -80,14 +80,18 @@ public class CubeClickHandler : MonoBehaviour
         {
             if (!_playerToPawn.ContainsKey(player))
             {
-                if (_pawnsOrdered[_addedPawns] == null)
+                if (_addedPawns > 0)
                 {
-                    Debug.LogError($"Not enough pawn in list, only: {_pawnsOrdered.Count}");
+                    if (_pawnsOrdered[_addedPawns] == null)
+                    {
+                        Debug.LogError($"Not enough pawn in list, only: {_pawnsOrdered.Count}");
+                    }
+                    else
+                    {
+                        _playerToPawn[player] = _pawnsOrdered[_addedPawns++];
+                    }
                 }
-                else
-                {
-                    _playerToPawn[player] = _pawnsOrdered[_addedPawns++];
-                }
+
             }
         }
     }
@@ -101,9 +105,10 @@ public class CubeClickHandler : MonoBehaviour
 
     private void OnPlayEndHandler(PlayEndResult endResult)
     {
-        if(endResult.PlayResultType == PlayEndResultType.Win)
+        if (endResult.PlayResultType == PlayEndResultType.Win)
         {
-            _textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
+            //_textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
+            print("The player " + endResult.Winner.Id + " wins the game !!!!!");
         }
     }
 }
