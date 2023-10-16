@@ -10,7 +10,7 @@ public class HUDMenu : SimpleMenu<HUDMenu>
     [SerializeField] private Button _exitBtn;
     private HUDButtonAction _HUDButtonAction;
 
-    public void Awake()
+    private void Awake()
     {
         _HUDButtonAction = MessageBus.GetBus<HUDButtonAction>();
         _pauseBtn.onClick.AddListener(() => OnPausePressed());
