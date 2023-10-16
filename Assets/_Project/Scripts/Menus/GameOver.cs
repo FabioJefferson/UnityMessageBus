@@ -6,7 +6,7 @@ public class GameOver : SimpleMenu<GameOver>
 {
     public void OnReplayButtonPressed()
     {
-        GameMenu.Show();
+        HUDMenu.Show();
     }
     public void OnExitButtonPressed()
     {

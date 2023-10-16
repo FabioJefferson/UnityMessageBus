@@ -15,25 +15,27 @@ public class PlayManager : MonoBehaviour
     private void Awake()
     {
 #if UNITY_EDITOR
-        if(!_boardPrefab)
+        if (!_boardPrefab)
         {
             Debug.LogError("_board is NULL", this);
         }
-        if(_boardPrefab.gameObject.activeSelf)
+        if (_boardPrefab.gameObject.activeSelf)
         {
             HideBoard();
         }
 #endif
-       
+
         MessageBus.GetBus<BoardAction>()
             .Connect(msg => OnActionMessage(msg));
+        MessageBus.GetBus<HUDButtonAction>()
+            .Connect(msg => OnHUDButtonActionMessage(msg));
     }
 
     private void OnActionMessage(BoardActionType msg)
     {
         switch (msg)
         {
-            case  BoardActionType.Close:
+            case BoardActionType.Close:
                 HideBoard();
                 break;
             case BoardActionType.Show:
@@ -41,8 +43,28 @@ public class PlayManager : MonoBehaviour
                 _game = new();
                 _game.InitializeGameState();
                
+                if (_game == null)
+                {
+                    _game = new();
+                }
                 break;
-            default: 
+            default:
+                break;
+
+        }
+    }
+
+    private void OnHUDButtonActionMessage(HUDButtonActionType msg)
+    {
+        switch (msg)
+        {
+            case HUDButtonActionType.Pause:
+                HideBoard();
+                break;
+            case HUDButtonActionType.Exit:
+                HideBoard();
+                break;
+            default:
                 break;
 
         }
@@ -57,7 +79,7 @@ public class PlayManager : MonoBehaviour
     public void HideBoard()
     {
         _boardPrefab.gameObject.SetActive(false);
-        _camera.gameObject.SetActive(false);
+        //_camera.gameObject.SetActive(false);
     }
 
     

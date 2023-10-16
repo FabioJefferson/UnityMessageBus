@@ -100,7 +100,7 @@ Transform:
   - {fileID: 5840865560787337115}
   - {fileID: 3671817479870051305}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 26.334, y: -135, z: 0}
 --- !u!114 &5147411442146568061
 MonoBehaviour:
@@ -119,6 +119,8 @@ MonoBehaviour:
   PauseMenuPrefab: {fileID: 8328534293880346991, guid: c120f115c5ab6f549bf96621cf2f9abd,
     type: 3}
   GameOverMenuPrefab: {fileID: -2278120625591048620, guid: 21bd6eb4b49967f4fa568f322d58e246,
+    type: 3}
+  HUDMenuPrefab: {fileID: 4620862361600897836, guid: 324aaf0543f1d7f498daf97016332db4,
     type: 3}
 --- !u!1 &9059226858144221204
 GameObject:
