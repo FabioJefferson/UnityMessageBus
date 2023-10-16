@@ -66,57 +66,5 @@ public class Board
             return new InputResult(true, new PlaySessionResult(false));
         }
     }
-
-    //public String ReturnForm(int number)
-    //{
-    //    String tmp = "";
-    //    if (number == -1)
-    //    {
-    //        tmp = ".";
-    //    }
-    //    if (number == 0)
-    //    {
-    //        tmp = "x";
-    //    }
-    //    if (number == 1)
-    //    {
-    //        tmp = "o";
-    //    }
-    //    return tmp;
-    //}
-    //
-    //public void Show(Piece[] all_piece)
-    //{
-    //    for (int i = 0; i <= 2; i++)
-    //    {
-    //        Console.Write(i + " | ");
-    //    }
-    //    Console.WriteLine("\n-----------");
-    //    for (int i = 3; i <= 5; i++)
-    //    {
-    //        Console.Write(i + " | ");
-    //    }
-    //    Console.WriteLine("\n-----------");
-    //    for (int i = 6; i <= 8; i++)
-    //    {
-    //        Console.Write(i + " | ");
-    //    }
-    //    Console.WriteLine("\n");
-    //    for (int i = 0; i <= 2; i++)
-    //    {
-    //        Console.Write(this.ReturnForm(all_piece[i].OwnerId) + " | ");
-    //    }
-    //    Console.WriteLine("\n-----------");
-    //    for (int i = 3; i <= 5; i++)
-    //    {
-    //        Console.Write(this.ReturnForm(all_piece[i].OwnerId) + " | ");
-    //    }
-    //    Console.WriteLine("\n-----------");
-    //    for (int i = 6; i <= 8; i++)
-    //    {
-    //        Console.Write(this.ReturnForm(all_piece[i].OwnerId) + " | ");
-    //    }
-    //    Console.WriteLine("\n");
-    //}
 }
 
