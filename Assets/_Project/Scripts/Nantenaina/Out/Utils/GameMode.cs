@@ -6,7 +6,7 @@ namespace test.Utils
         public GameModeType Mode;
         public  GameModeType SetGameMode()
         {
-            Console.WriteLine("choose game Mode:\n[0 -> AI vs PLayer\n 1 -> Human vs Human]");
+            Console.WriteLine("choose _game Mode:\n[0 -> AI vs PLayer\n 1 -> Human vs Human]");
             //InputManager inputManager = new (Console.ReadLine());
             var input = 0;
             switch(input)

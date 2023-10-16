@@ -78,7 +78,7 @@ namespace AI_TictacToe_logic.AI
             }
 
             // Checked cols, rows & diags and nobody has won.
-            // If all spots are occupied the it's a draw, if not, then game is still on 
+            // If all spots are occupied the it's a draw, if not, then _game is still on 
             return !gameState.Board.AvailablePositions.Any()
                 ? ResultState.Draw
                 : ResultState.InProgress;

@@ -16,6 +16,7 @@ namespace AI_TictacToe_logic.AI
         Human,
         RandomBot,
         MiniMax,
-        QLearning
+        QLearning,
+        Default
     }
 }

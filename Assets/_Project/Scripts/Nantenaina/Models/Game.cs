@@ -1,7 +1,9 @@
 ﻿using AI_TictacToe_logic.AI;
+using Assets._Project.Scripts.Nantenaina.Data;
 using KLab.MessageBuses;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using test.Utils;
 using UnityEngine;
 
@@ -24,9 +26,9 @@ public class Game
     private PlayEndedBus _playEndedBus;
     private MinMaxBot _aiBot;
     private GameState _gameState;
-   
+    private GameStateHandler _gameStateHandler;
     private FilteredBoardInputBus _filteredBoardInputBus;
-
+    public static Game Instance;
     public Game()
     {
         _board = new Board();
@@ -41,7 +43,7 @@ public class Game
         
         _currentPlayer = _player1;
 
-        boardInputBus.Connect(move => OnBoardInput(move));
+        boardInputBus.Connect(async move => { OnBoardInput(move); _ = await _player1.MakeMove(_gameState); });
         _playerSwitchedBus.Broadcast(_currentPlayer);
 
 
@@ -55,28 +57,28 @@ public class Game
             gameModeBus.Broadcast(gameMode.Mode);
             
         }
-        InitializeGameState();
+    
+     
 
     }
 
-    private void OnGameStarted()
-    {
-        
-    }
-    private void InitializeGameState()
+   
+    public void InitializeGameState()
     {
         if(_gameMode==GameModeType.AI)
         {
             _aiBot = new();
-            _gameState = new GameState(3, _player1, _aiBot);
+            _gameState = new GameState(3, _aiBot, _aiBot);
         }
         else
         {
             _gameState = new GameState(3, _player1, _player2);
         }
-        UnityEngine.Debug.Log($"GameState{_gameState.Board.AvailablePositions.Count}");
+        //UnityEngine.Debug.Log($"GameState{_gameState.Board.AvailablePositions.Count}");
+        _gameStateHandler = new(_gameState);
     }
-    private void OnBoardInput(Move move)
+
+    private void OnBoardInput( Move move )
     {
         if (_hasPlayEnded)
         {
@@ -90,7 +92,7 @@ public class Game
             return;
         }
 
-        var inputResult = _board.CheckForWin(move.Player, move.Position.GridIndex, _play);
+        var inputResult = _board.CheckForWin((Player)move.Player, move.Position.GridIndex, _play);
         if (!inputResult.InputSuccess)
         {
             UnityEngine.Debug.LogError("Error on input");
