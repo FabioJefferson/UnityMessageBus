@@ -789,7 +789,7 @@ RectTransform:
   - {fileID: 7016797632996547284}
   - {fileID: 3765289364604494907}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df96c357333c54d41a56cee0296a4a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed: 1
+  DestroyWhenClosed: 0
   DisableMenusUnderneath: 1
   _pauseBtn: {fileID: 7401900600550674434}
   _exitBtn: {fileID: 4868616024432028674}
