@@ -23,7 +23,7 @@ namespace AI_TictacToe_logic.AI
         public virtual async Task<int> MakeMove(GameState state)
         {
             await Task.Yield();
-
+           
             var myNumber = state.GetCurrentPlayersNumber();
             var clonedState = state.Clone();
             var availableMoves = clonedState.Board.AvailablePositions;
@@ -55,6 +55,7 @@ namespace AI_TictacToe_logic.AI
             }
 
             var rndIndex = new Random().Next(0, topMoves.Length - 1);
+            
             return topMoves[rndIndex];
         }
 
@@ -63,7 +64,7 @@ namespace AI_TictacToe_logic.AI
             // make the move on the cloned board
             state.ApplyMove(move);
 
-            // check if the game is over. If it is, return the score
+            // check if the _game is over. If it is, return the score
             var result = _resultChecker.GetResult(state);
             switch (result)
             {
@@ -75,7 +76,7 @@ namespace AI_TictacToe_logic.AI
                     return WinOrLoseScore(myNumber, Constants.PLAYER_2, depth);
             }
 
-            // The game is not done yet. Now we'll look at all the next available spots and check all the possible scores.
+            // The _game is not done yet. Now we'll look at all the next available spots and check all the possible scores.
             // We'll continue to do so recursively until we get a result for each position
 
             depth++;
@@ -96,7 +97,7 @@ namespace AI_TictacToe_logic.AI
 
         // Scoring:
         //  - Draw is meh... 0 points
-        //  - A Loss is bad: -10. But a loss much later in the game is better than an immediate loss, so we add depth
+        //  - A Loss is bad: -10. But a loss much later in the _game is better than an immediate loss, so we add depth
         //  - A Win is great: +10. An immediate win trumps a later win. So we subtract the depth from the win score
         private static int DrawScore() => 0;
         private static int LoseScore(int depth) => -100 + depth;
