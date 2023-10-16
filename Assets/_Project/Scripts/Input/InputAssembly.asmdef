@@ -1,0 +1,17 @@
+{
+    "name": "InputAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5ec8c9e8ffee7d54bb7a8712badd8898",
+        "GUID:e3fcd211ffdb3db41a026d48fcdf63bf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
