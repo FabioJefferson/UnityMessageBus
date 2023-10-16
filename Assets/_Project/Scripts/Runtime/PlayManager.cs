@@ -78,5 +78,4 @@ public class PlayManager : MonoBehaviour
         _boardPrefab.gameObject.SetActive(false);
         //_camera.gameObject.SetActive(false);
     }
-    //gfdvuf
 }
