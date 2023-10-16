@@ -17,18 +17,15 @@ public class WelcomeMenu : SimpleMenu<WelcomeMenu>
         _playBtn.onClick.AddListener(() => OnPlayPressed());
 
     }
-
+    //public void OnEnable()
+    //{
+    //    print("OnEnableCalled");
+    //    _playBtn.onClick.AddListener(() => OnPlayPressed());
+    //}
     public void OnPlayPressed()
     {
-        Hide();
-
         Debug.Log("OnPlayPressed");
         _boardAction.Broadcast(BoardActionType.Show);
-    }
-
-    public override void OnBackPressed()
-    {
-
     }
 
     public void OnExitButtonPressed()
