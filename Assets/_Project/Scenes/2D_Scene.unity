@@ -365,13 +365,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _pawnsOrdered.Array.data[0]
       value: 
-      objectReference: {fileID: 7622558531402550588, guid: 25521026d13434a46993aad2b0656ae8,
+      objectReference: {fileID: 4660227361815839528, guid: dbb745a8dcf476b41ac4aa0fb562ea71,
         type: 3}
     - target: {fileID: 459916364356306738, guid: 6033ad109d686b94b89da6e71eae3b6f,
         type: 3}
       propertyPath: _pawnsOrdered.Array.data[1]
       value: 
-      objectReference: {fileID: 7547776340739944839, guid: ceaf9e06d2bdaeb4ab4e22f1c63a3b23,
+      objectReference: {fileID: 7901299937522813170, guid: 7773345ef4466134595360d59ff0b3f3,
         type: 3}
     - target: {fileID: 688745688256330140, guid: 6033ad109d686b94b89da6e71eae3b6f,
         type: 3}
