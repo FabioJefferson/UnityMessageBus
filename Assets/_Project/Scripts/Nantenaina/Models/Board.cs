@@ -70,9 +70,9 @@ namespace AI_TictacToe_logic.AI
 
         /// <summary>
         /// Some bots may require copies of the board to calculate or predict best move.
-        /// Use Clone as a way to get a copy of the current board state without mutating the existing one.
+        /// Use Clone as a way to get a copy of the current board State without mutating the existing one.
         /// </summary>
-        /// <returns>Deep copy of the current board state</returns>
+        /// <returns>Deep copy of the current board State</returns>
         public Board Clone()
         {
             var clonedBoard = new Board(Size)

@@ -1,5 +1,8 @@
+using AI_TictacToe_logic.AI;
+using Assets._Project.Scripts.Nantenaina.Data;
 using KLab.MessageBuses;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using test.Utils;
 using TMPro;
 using UnityEngine;
@@ -12,12 +15,19 @@ public class CubeClickHandler : MonoBehaviour
     private Player _currentPlayer;
     private Dictionary<Player, Pawn> _playerToPawn = new();
     private int _addedPawns;
+    private bool _isGameModeHumanVsAi = true;
+    private MinMaxBot _aiBot;
+    private GameStateHandler _gameStateHandler;
 
     private void Awake()
     {
+
+        _aiBot = new();
+        _gameStateHandler = GameStateHandler.GetInstance();
         ValidateNotNull();
         AssignClickListeners();
         ListenToBuses();
+      
     }
 
     private void ListenToBuses()
@@ -41,11 +51,7 @@ public class CubeClickHandler : MonoBehaviour
         }
     }
 
-    private void OnGameModeClicked()
-    {
-
-    }
-
+   
     private void AssignClickListeners()
     {
         int counter = 0;
@@ -64,7 +70,7 @@ public class CubeClickHandler : MonoBehaviour
     {
         var _cubeSelected = _cubeList[move.Position.GridIndex];
         var position = _cubeSelected.transform.position;
-        var _ = Instantiate(GetPlayersPawn(move.Player), position, Quaternion.identity);
+        var _ = Instantiate(GetPlayersPawn((Player)move.Player), position, Quaternion.identity);
 
         Pawn GetPlayersPawn(Player playerId)
         {
@@ -101,23 +107,46 @@ public class CubeClickHandler : MonoBehaviour
         }
     }
 
-    private void OnMouseUpHandler(Position pos)
+    private void OnMouseUpHandler( Position pos )
     {
         Move move = new(false, pos, _currentPlayer);
         MessageBus.GetBus<BoardInputBus>()
             .Broadcast(move);
+        if (_isGameModeHumanVsAi)
+        {
+            _ = MoveAIAsync();
+        }
     }
 
     private void OnAIModeChoosen(GameModeType type)
     {
-        Debug.Log(type.ToString()); 
+       if(type == GameModeType.AI)
+       {
+            _isGameModeHumanVsAi = true;
+       }
     }
 
     private void OnPlayEndHandler(PlayEndResult endResult)
     {
         if(endResult.PlayResultType == PlayEndResultType.Win)
         {
-            _textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
+            _textMessage.text = "The player " + endResult.Winner.Id + " wins the _game !!!!!";
         }
+    }
+    
+    public async Task<int> MoveAIAsync()
+    {
+        if (_gameStateHandler.State != null)
+        {
+            var playerMove = await _gameStateHandler.State.PlayersTurn.MakeMove(_gameStateHandler.State);
+            UnityEngine.Debug.Log("_bot:" + playerMove);
+            _gameStateHandler.State.ApplyMove(playerMove);
+            Position pos = new(playerMove);
+
+            MessageBus.GetBus<BoardInputBus>().Broadcast(new(false,pos,_currentPlayer));
+            return playerMove;
+        }
+
+        return 0;
     }
 }

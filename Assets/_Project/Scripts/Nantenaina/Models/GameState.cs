@@ -29,7 +29,7 @@ namespace AI_TictacToe_logic.AI
         }
 
         /// <summary>
-        /// A move was made, let's apply the move and update the game state accordingly
+        /// A move was made, let's apply the move and update the _game State accordingly
         /// </summary>
         public void ApplyMove(int move)
         {
@@ -55,7 +55,7 @@ namespace AI_TictacToe_logic.AI
 
         public void GameEnded(ResultState result)
         {
-            // Calling GameEnded on the players themselves, allows opportunity to train based on how the game concluded
+            // Calling GameEnded on the players themselves, allows opportunity to train based on how the _game concluded
             Player1.GameEnded(this, result, Constants.PLAYER_1);
             Player2.GameEnded(this, result, Constants.PLAYER_2);
         }
@@ -79,10 +79,10 @@ namespace AI_TictacToe_logic.AI
         #region Clone
 
         /// <summary>
-        /// Some bots may require copies of the game state to calculate or predict best move
-        /// Use Clone as a way to get a copy of the current state without mutating the existing one.
+        /// Some bots may require copies of the _game State to calculate or predict best move
+        /// Use Clone as a way to get a copy of the current State without mutating the existing one.
         /// </summary>
-        /// <returns>Deep copy of the current game state</returns>
+        /// <returns>Deep copy of the current _game State</returns>
         public GameState Clone()
         {
             var clonedState = new GameState(Board.Size, Player1, Player2)
