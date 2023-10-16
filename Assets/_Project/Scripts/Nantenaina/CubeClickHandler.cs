@@ -80,7 +80,7 @@ public class CubeClickHandler : MonoBehaviour
         {
             if (!_playerToPawn.ContainsKey(player))
             {
-                if (_addedPawns > 0)
+                //if (_addedPawns > 0)
                 {
                     if (_pawnsOrdered[_addedPawns] == null)
                     {
