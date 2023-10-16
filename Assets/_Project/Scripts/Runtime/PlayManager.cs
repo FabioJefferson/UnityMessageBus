@@ -27,6 +27,8 @@ public class PlayManager : MonoBehaviour
 
         MessageBus.GetBus<BoardAction>()
             .Connect(msg => OnActionMessage(msg));
+        MessageBus.GetBus<HUDButtonAction>()
+            .Connect(msg => OnHUDButtonActionMessage(msg));
     }
 
     private void OnActionMessage(BoardActionType msg)
@@ -38,7 +40,26 @@ public class PlayManager : MonoBehaviour
                 break;
             case BoardActionType.Show:
                 ShowEmptyBoard();
-                _game = new();
+                if (_game == null)
+                {
+                    _game = new();
+                }
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    private void OnHUDButtonActionMessage(HUDButtonActionType msg)
+    {
+        switch (msg)
+        {
+            case HUDButtonActionType.Pause:
+                HideBoard();
+                break;
+            case HUDButtonActionType.Exit:
+                HideBoard();
                 break;
             default:
                 break;
@@ -57,5 +78,4 @@ public class PlayManager : MonoBehaviour
         _boardPrefab.gameObject.SetActive(false);
         //_camera.gameObject.SetActive(false);
     }
-    //gfdvuf
 }

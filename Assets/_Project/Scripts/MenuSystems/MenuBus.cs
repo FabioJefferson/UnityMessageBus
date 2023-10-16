@@ -1,8 +1,13 @@
 ﻿using KLab.MessageBuses;
- 
-public sealed class MenuBus : MessageBus<MenuCommands>
+
+
+public sealed class HUDButtonAction : MessageBus<HUDButtonActionType> { }
+
+public enum HUDButtonActionType
 {
-    
+    None = 0,
+    Pause,
+    Exit
 }
 
 //public class T : MessageBus<T>
