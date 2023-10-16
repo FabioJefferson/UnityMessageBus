@@ -2,7 +2,6 @@
 using System.Reflection;
 using UnityEngine;
 using KLab.MessageBuses;
-using Sirenix.OdinInspector;
 
 public class MenuManager : MonoBehaviour
 {
