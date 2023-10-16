@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 3253080059896635635}
   - component: {fileID: 5277035909427969184}
   - component: {fileID: 1206561509876508621}
-  - component: {fileID: 4620862361600897836}
+  - component: {fileID: 8420191013997470134}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -789,7 +789,7 @@ RectTransform:
   - {fileID: 7016797632996547284}
   - {fileID: 3765289364604494907}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
---- !u!114 &4620862361600897836
+--- !u!114 &8420191013997470134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -868,10 +868,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5587019586880839182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df96c357333c54d41a56cee0296a4a93, type: 3}
+  m_Script: {fileID: 11500000, guid: 4361c190eb262c64484bd71929f2894a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed: 0
+  DestroyWhenClosed: 1
   DisableMenusUnderneath: 1
   _pauseBtn: {fileID: 7401900600550674434}
   _exitBtn: {fileID: 4868616024432028674}
