@@ -10,7 +10,7 @@ namespace AI_TictacToe_logic.AI
 
         public IPlayer PlayersTurn { get; private set; }
         public List<string> AllStates { get; set; }
-        public Board Board { get; set; }
+        public AIBoard Board { get; set; }
 
         public GameState(
             int boardSize,
@@ -21,7 +21,7 @@ namespace AI_TictacToe_logic.AI
             Player2 = player2;
 
             PlayersTurn = player1;
-            Board = new Board(boardSize);
+            Board = new AIBoard(boardSize);
             AllStates = new List<string>
         {
             Board.GetState()

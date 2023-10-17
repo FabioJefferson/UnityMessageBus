@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AI_TictacToe_logic.AI
 {
-    public class Board
+    public class AIBoard
     {
         public int Size { get; set; }
 
@@ -32,7 +32,7 @@ namespace AI_TictacToe_logic.AI
 
         public List<int> AvailablePositions { get; private set; } = new();
 
-        public Board(int boardSize)
+        public AIBoard(int boardSize)
         {
             if (boardSize is < 3 or > 5)
             {
@@ -73,9 +73,9 @@ namespace AI_TictacToe_logic.AI
         /// Use Clone as a way to get a copy of the current board State without mutating the existing one.
         /// </summary>
         /// <returns>Deep copy of the current board State</returns>
-        public Board Clone()
+        public AIBoard Clone()
         {
-            var clonedBoard = new Board(Size)
+            var clonedBoard = new AIBoard(Size)
             {
                 Positions = Positions.ToArray(),
                 AvailablePositions = new List<int>(AvailablePositions)
