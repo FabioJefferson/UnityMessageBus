@@ -13,10 +13,3 @@ public enum PawnType
     CROSS = 51,
     DISK
 }
-
-#if FIKA
-public class Much
-{
-
-}
-#endif

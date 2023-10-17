@@ -7,4 +7,7 @@ public  class Position
     {
         GridIndex = index;
     }
+    public Position() { }
+
+
 }

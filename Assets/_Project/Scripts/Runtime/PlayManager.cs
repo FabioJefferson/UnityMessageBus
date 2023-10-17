@@ -39,6 +39,8 @@ public class PlayManager : MonoBehaviour
             case BoardActionType.Show:
                 ShowEmptyBoard();
                 _game = new();
+                _game.InitializeGameState();
+               
                 break;
             default:
                 break;
