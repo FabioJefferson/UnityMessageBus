@@ -70,3 +70,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+*.meta
+Assets/_Project/Arts/Materials/New Material 1.mat.meta
+*.meta
+*.meta
+*.meta
+*.meta
+Assets/_Project/Scripts/MenuSystems/PauseMenu.cs.meta
+*.meta

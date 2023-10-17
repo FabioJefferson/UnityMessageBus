@@ -1,5 +1,16 @@
+using AI_TictacToe_logic.AI;
+using Assets._Project.Scripts.Nantenaina.Data;
 using KLab.MessageBuses;
 using System.Collections.Generic;
+<<<<<<< Updated upstream:Assets/_Project/Scripts/Main/CubeClickHandler.cs
+=======
+<<<<<<< Updated upstream
+=======
+using System.Threading.Tasks;
+using test.Utils;
+>>>>>>> Stashed changes
+using TMPro;
+>>>>>>> Stashed changes:Assets/_Project/Scripts/Nantenaina/CubeClickHandler.cs
 using UnityEngine;
 using TMPro;
 
@@ -11,12 +22,19 @@ public class CubeClickHandler : MonoBehaviour
     private Player _currentPlayer;
     private Dictionary<Player, Pawn> _playerToPawn = new();
     private int _addedPawns;
+    private bool _isGameModeHumanVsAi = true;
+    private MinMaxBot _aiBot;
+    private GameStateHandler _gameStateHandler;
 
     private void Awake()
     {
+
+        _aiBot = new();
+        _gameStateHandler = GameStateHandler.GetInstance();
         ValidateNotNull();
         AssignClickListeners();
         ListenToBuses();
+      
     }
 
     private void ListenToBuses()
@@ -37,6 +55,10 @@ public class CubeClickHandler : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
+   
+>>>>>>> Stashed changes
     private void AssignClickListeners()
     {
         int counter = 0;
@@ -55,7 +77,7 @@ public class CubeClickHandler : MonoBehaviour
     {
         var _cubeSelected = _cubeList[move.Position.GridIndex];
         var position = _cubeSelected.transform.position;
-        var _ = Instantiate(GetPlayersPawn(move.Player), position, Quaternion.identity);
+        var _ = Instantiate(GetPlayersPawn((Player)move.Player), position, Quaternion.identity);
 
         Pawn GetPlayersPawn(Player playerId)
         {
@@ -96,19 +118,54 @@ public class CubeClickHandler : MonoBehaviour
         }
     }
 
-    private void OnMouseUpHandler(Position pos)
+    private void OnMouseUpHandler( Position pos )
     {
         Move move = new(false, pos, _currentPlayer);
         MessageBus.GetBus<BoardInputBus>()
             .Broadcast(move);
+        if (_isGameModeHumanVsAi)
+        {
+            _ = MoveAIAsync();
+        }
     }
 
+<<<<<<< Updated upstream
+=======
+    private void OnAIModeChoosen(GameModeType type)
+    {
+       if(type == GameModeType.AI)
+       {
+            _isGameModeHumanVsAi = true;
+       }
+    }
+
+>>>>>>> Stashed changes
     private void OnPlayEndHandler(PlayEndResult endResult)
     {
         if (endResult.PlayResultType == PlayEndResultType.Win)
         {
+<<<<<<< Updated upstream:Assets/_Project/Scripts/Main/CubeClickHandler.cs
             //_textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
             print("The player " + endResult.Winner.Id + " wins the game !!!!!");
+=======
+            _textMessage.text = "The player " + endResult.Winner.Id + " wins the _game !!!!!";
+>>>>>>> Stashed changes:Assets/_Project/Scripts/Nantenaina/CubeClickHandler.cs
         }
+    }
+    
+    public async Task<int> MoveAIAsync()
+    {
+        if (_gameStateHandler.State != null)
+        {
+            var playerMove = await _gameStateHandler.State.PlayersTurn.MakeMove(_gameStateHandler.State);
+            UnityEngine.Debug.Log("_bot:" + playerMove);
+            _gameStateHandler.State.ApplyMove(playerMove);
+            Position pos = new(playerMove);
+
+            MessageBus.GetBus<BoardInputBus>().Broadcast(new(false,pos,_currentPlayer));
+            return playerMove;
+        }
+
+        return 0;
     }
 }

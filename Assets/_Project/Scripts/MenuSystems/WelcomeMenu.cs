@@ -24,7 +24,7 @@ public class WelcomeMenu : SimpleMenu<WelcomeMenu>
     //}
     public void OnPlayPressed()
     {
-        Debug.Log("OnPlayPressed");
+       
         _boardAction.Broadcast(BoardActionType.Show);
     }
 

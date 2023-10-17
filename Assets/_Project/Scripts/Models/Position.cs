@@ -7,4 +7,10 @@ public  class Position
     {
         GridIndex = index;
     }
+<<<<<<< Updated upstream
+=======
+    public Position() { }
+
+
+>>>>>>> Stashed changes
 }

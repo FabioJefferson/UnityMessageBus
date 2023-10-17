@@ -40,6 +40,7 @@ public class PlayManager : MonoBehaviour
                 break;
             case BoardActionType.Show:
                 ShowEmptyBoard();
+<<<<<<< Updated upstream
                 if (_game == null)
                 {
                     _game = new();
@@ -60,6 +61,14 @@ public class PlayManager : MonoBehaviour
                 break;
             case HUDButtonActionType.Exit:
                 HideBoard();
+=======
+                _game = new();
+<<<<<<< Updated upstream
+=======
+                _game.InitializeGameState();
+               
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 break;
             default:
                 break;
