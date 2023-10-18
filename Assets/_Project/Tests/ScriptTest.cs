@@ -45,7 +45,7 @@ public class ScriptTest
         var input = 0;
         Play play = new Play();
         var result = play.CheckInput(all_p, input);
-        //Assert.IsTrue(result.Result)xvffffffffx;
+        //Assert.IsTrue(result.Result);
          Assert.AreEqual(input, result.Input);
     }
 
