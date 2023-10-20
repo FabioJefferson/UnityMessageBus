@@ -56,7 +56,7 @@ public class CubeClickHandler : MonoBehaviour
         var _cubeSelected = _cubeList[move.Position.GridIndex];
         var position = _cubeSelected.transform.position;
         var _ = Instantiate(GetPlayersPawn(move.Player), position, Quaternion.identity);
-
+        _.transform.parent = this.transform;
         Pawn GetPlayersPawn(Player playerId)
         {
             if (!_playerToPawn.ContainsKey(playerId))
