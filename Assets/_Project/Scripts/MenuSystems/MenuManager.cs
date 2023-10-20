@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public GameOver GameOverMenuPrefab;
     public HUDMenu HUDMenuPrefab;
     public GameMode GameModePrefab;
+    public GameModeMenu GameModeMenuPrefab;
 
     [SerializeField] private Stack<Menu> _menuStack = new();
 
@@ -29,6 +30,25 @@ public class MenuManager : MonoBehaviour
             .Connect(msg => OnActionMessage(msg));
         MessageBus.GetBus<HUDButtonAction>()
             .Connect(msg => OnHUDButtonActionMessage(msg));
+        MessageBus.GetBus<GameModeAction>()
+            .Connect(msg => OnGameModeButtonActionMessage(msg));
+    }
+
+    private void OnGameModeButtonActionMessage(GameModeActionType msg)
+    {
+        switch (msg)
+        {
+            case GameModeActionType.AI:
+                print("AI_Button Heard");
+                break;
+            case GameModeActionType.OneVsOne:
+                print("1 Vs 1 Button Heard");
+                //WelcomeMenu.Show();
+                break;
+            default:
+                break;
+
+        }
     }
 
     private void OnGameModeSelected(GameModeType msg)
