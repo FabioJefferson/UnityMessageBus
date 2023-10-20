@@ -264,6 +264,10 @@ MonoBehaviour:
     type: 3}
   _camera2D: {fileID: 3143520411620046463}
   _camera3D: {fileID: 3143520411620046463}
+  _realBoardPrefab2D: {fileID: 3242851291605711621, guid: f0b0c31ad6057bf4eaabffe612bab867,
+    type: 3}
+  _realBoardPrefab3D: {fileID: 54041608043765953, guid: 464a3dbef39fdd04698187a698f8f977,
+    type: 3}
 --- !u!1 &3041959429795014316
 GameObject:
   m_ObjectHideFlags: 0
