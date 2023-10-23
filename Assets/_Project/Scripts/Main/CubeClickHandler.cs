@@ -107,7 +107,7 @@ public class CubeClickHandler : MonoBehaviour
     {
         if (endResult.PlayResultType == PlayEndResultType.Win)
         {
-            //_textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
+            _textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
             print("The player " + endResult.Winner.Id + " wins the game !!!!!");
         }
     }
