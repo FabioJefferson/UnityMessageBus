@@ -258,12 +258,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b8280beb2b7504fb9490979ca51a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boardPrefab2D: {fileID: 9123525069293797107, guid: f0b0c31ad6057bf4eaabffe612bab867,
-    type: 3}
-  _boardPrefab3D: {fileID: 9123525069293797107, guid: 464a3dbef39fdd04698187a698f8f977,
-    type: 3}
+  _boardPrefab2D: {fileID: 0}
+  _boardPrefab3D: {fileID: 6956569342147434132}
   _camera2D: {fileID: 3143520411620046463}
   _camera3D: {fileID: 3143520411620046463}
+  _realBoardPrefab2D: {fileID: 6203721007728149088}
+  _realBoardPrefab3D: {fileID: 54041608043765953, guid: 464a3dbef39fdd04698187a698f8f977,
+    type: 3}
 --- !u!1 &3041959429795014316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,8 +1075,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 0}
+  m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -1326,11 +1326,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board2D
       objectReference: {fileID: 0}
-    - target: {fileID: 3242851291605711621, guid: f0b0c31ad6057bf4eaabffe612bab867,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9123525069293797107, guid: f0b0c31ad6057bf4eaabffe612bab867,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1389,6 +1384,12 @@ PrefabInstance:
 --- !u!4 &397903106910734230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9123525069293797107, guid: f0b0c31ad6057bf4eaabffe612bab867,
+    type: 3}
+  m_PrefabInstance: {fileID: 8870093943871699301}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6203721007728149088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3242851291605711621, guid: f0b0c31ad6057bf4eaabffe612bab867,
     type: 3}
   m_PrefabInstance: {fileID: 8870093943871699301}
   m_PrefabAsset: {fileID: 0}

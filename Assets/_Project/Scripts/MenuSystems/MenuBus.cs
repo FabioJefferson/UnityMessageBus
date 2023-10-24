@@ -3,6 +3,15 @@
 
 public sealed class HUDButtonAction : MessageBus<HUDButtonActionType> { }
 
+public sealed class GameModeAction : MessageBus<GameModeActionType> { }
+
+public enum GameModeActionType
+{
+    None = 0,
+    AI,
+    OneVsOne
+}
+
 public enum HUDButtonActionType
 {
     None = 0,

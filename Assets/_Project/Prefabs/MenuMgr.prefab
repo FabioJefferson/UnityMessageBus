@@ -124,6 +124,8 @@ MonoBehaviour:
     type: 3}
   GameModePrefab: {fileID: 1448684857614860918, guid: df08027a33a9bb14892cf55f43c6ce42,
     type: 3}
+  GameModeMenuPrefab: {fileID: 3740432032611147894, guid: 6537f3e1a4450e847837553f65969de6,
+    type: 3}
 --- !u!1 &9059226858144221204
 GameObject:
   m_ObjectHideFlags: 0
