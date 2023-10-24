@@ -43,12 +43,27 @@ public class MenuManager : MonoBehaviour
                 break;
             case GameModeActionType.OneVsOne:
                 print("1 Vs 1 Button Heard");
+        MessageBus.GetBus<EndGameBus>()
+            .Connect(endGameType => OnGameOver(endGameType));
+    }
+
+    private void OnGameOver(EndGameType endGameType)
+    {
+        switch (endGameType)
+        {
+            case EndGameType.Win:
+                print("There is a winner");
+                GameOver.Show();
+                break;
+            case EndGameType.Nul:
+                print("Game Nul");
                 //WelcomeMenu.Show();
                 break;
             default:
                 break;
 
         }
+       
     }
 
     private void OnGameModeSelected(GameModeType msg)

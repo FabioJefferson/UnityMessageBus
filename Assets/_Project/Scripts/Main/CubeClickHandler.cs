@@ -11,6 +11,7 @@ public class CubeClickHandler : MonoBehaviour
     private Player _currentPlayer;
     private Dictionary<Player, Pawn> _playerToPawn = new();
     private int _addedPawns;
+    private EndGameBus _endGameBus;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class CubeClickHandler : MonoBehaviour
             .Connect(player => OnPlayerSwitchedHandler(player));
         MessageBus.GetBus<PlayEndedBus>()
             .Connect(endResult => OnPlayEndHandler(endResult));
+        _endGameBus = MessageBus.GetBus<EndGameBus>();
     }
 
     private void ValidateNotNull()
@@ -107,8 +109,10 @@ public class CubeClickHandler : MonoBehaviour
     {
         if (endResult.PlayResultType == PlayEndResultType.Win)
         {
-            _textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
-            print("The player " + endResult.Winner.Id + " wins the game !!!!!");
+            // _textMessage.text = "The player " + endResult.Winner.Id + " wins the game !!!!!";
+            _endGameBus.Broadcast(EndGameType.Win);
+            Debug.Log("2D");
+            print("The player " + endResult.Winner.Id + " wins the game !!!!!!");
         }
     }
 }
