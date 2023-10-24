@@ -12,7 +12,6 @@ public class MenuManager : MonoBehaviour
     public GameOver GameOverMenuPrefab;
     public HUDMenu HUDMenuPrefab;
     public GameMode GameModePrefab;
-    public GameModeMenu GameModeMenuPrefab;
 
     [SerializeField] private Stack<Menu> _menuStack = new();
 
