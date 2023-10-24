@@ -11,6 +11,15 @@ public sealed class BoardAction : MessageBus<BoardActionType> { }
 public sealed class PlayEndedBus : MessageBus<PlayEndResult> { }
 
 public sealed class IOErrorBus: MessageBus<ErrorMessage> { }
+public sealed class EndGameBus : MessageBus<EndGameType> { }
+
+public enum EndGameType
+{
+    None = 0,
+    Win,
+    Nul
+}
+
 
 public class ErrorMessage
 {
